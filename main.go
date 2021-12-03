@@ -63,7 +63,6 @@ func main() {
 			}
 		}
 	}
-	//fmt.Println(goodDays)
 	for i := 0; i < len(goodDays)-1; i++ {
 		diffYears := goodDays[i+1].Year - goodDays[i].Year
 		fmt.Printf("%04d-%02d-%02d: next: %d years\n",
