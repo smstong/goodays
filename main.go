@@ -25,6 +25,21 @@ func leapYear(year int) bool {
 	return false
 }
 
+func maxDayOfMonth(year, month int) int {
+	if leapYear(year) && month == 2 {
+		return 29
+	}
+	if !leapYear(year) && month == 2 {
+		return 28
+	}
+	switch month {
+	case 1, 3, 5, 7, 8, 10, 12:
+		return 31
+	default:
+		return 30
+	}
+}
+
 type Date struct {
 	Year, Month, Day int
 }
@@ -39,11 +54,7 @@ func main() {
 
 	for year = 1; year <= 9999; year++ {
 		for month = 1; month <= 12; month++ {
-			if leapYear(year) && month == 2 {
-				maxDay = 29
-			} else {
-				maxDay = 28
-			}
+			maxDay = maxDayOfMonth(year, month)
 			for day = 1; day <= maxDay; day++ {
 				date = fmt.Sprintf("%04d%02d%02d", year, month, day)
 				if date == reverse(date) {
